@@ -6,8 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField] private AudioSource bgAudioSource;
-    [SerializeField] private AudioSource sfxAudioSource;
+    [SerializeField] public AudioSource bgAudioSource;
+    [SerializeField] public AudioSource sfxAudioSource;
     [SerializeField] private AudioClip punchClip;
     [SerializeField] private AudioClip treeBreakClip;
     [SerializeField] private AudioClip stoneBreakClip;
@@ -17,6 +17,18 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    public bool ToggleMusic()
+    {
+        bgAudioSource.mute = !bgAudioSource.mute;
+        return bgAudioSource.mute;
+    }
+
+    public bool ToggleSound()
+    {
+        sfxAudioSource.mute = !sfxAudioSource.mute;
+        return sfxAudioSource.mute;
     }
 
     public void PlayPunch()

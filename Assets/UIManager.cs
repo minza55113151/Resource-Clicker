@@ -28,6 +28,11 @@ public class UIManager : MonoBehaviour
     //toggle spawn button
     [SerializeField] private Image toggleSpawnButton;
 
+    //toggle music button
+    [SerializeField] private Image toggleMusicButton;
+    //toggle sound button
+    [SerializeField] private Image toggleSoundButton;
+
 
     private void Awake()
     {
@@ -65,6 +70,32 @@ public class UIManager : MonoBehaviour
         }
     }
     
+    public void ToggleMusic()
+    {
+        bool isMusicMute = SoundManager.instance.ToggleMusic();
+        if (!isMusicMute)
+        {
+            toggleMusicButton.color = Color.white;
+        }
+        else
+        {
+            toggleMusicButton.color = Color.red;
+        }
+    }
+
+    public void ToggleSound()
+    {
+        bool isSoundMute = SoundManager.instance.ToggleSound();
+        if (!isSoundMute)
+        {
+            toggleSoundButton.color = Color.white;
+        }
+        else
+        {
+            toggleSoundButton.color = Color.red;
+        }
+    }
+
     public void SetAmountResource(int tier, int amount)
     {
         switch (tier)

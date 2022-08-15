@@ -56,6 +56,9 @@ public class UpgradeItem : MonoBehaviour, ISaveable
 
     public void OnBuyClick()
     {
+        //check nUpgrade
+        if (nUpgrade >= maxUpgrade)
+            return;
         //check money
         if (ResourceManager.instance.GetResource(PriceUnitStringtoIndex(priceUnit[nUpgrade])) < price[nUpgrade])
             return;
@@ -78,8 +81,10 @@ public class UpgradeItem : MonoBehaviour, ISaveable
                 {
                     textUpgradeName.text = "Coming Soon...";
                 }
-                icon.sprite = priceUnitIcons[n + 1];
-                
+                if (n <= 5)
+                {
+                    icon.sprite = priceUnitIcons[n + 1];
+                }
                 break;
             case "resourcespawnrate":
                 SpawnManager.instance.spawnRate *= 0.7f;

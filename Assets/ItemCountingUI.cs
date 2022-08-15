@@ -8,10 +8,12 @@ public class ItemCountingUI : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private RectTransform icon;
     private float iconMaxScale;
+    private Vector3 startLocalScale;
 
     private void Start()
     {
         iconMaxScale = UIManager.instance.iconMaxScale;
+        startLocalScale = icon.localScale;
     }
     
     public void SetText(string value)
@@ -27,13 +29,12 @@ public class ItemCountingUI : MonoBehaviour
 
     private IEnumerator AnimateIconHit()
     {
-        Vector3 startScale = icon.localScale;
         while (icon.localScale.x < iconMaxScale)
         {
             icon.localScale += new Vector3(0.1f, 0.1f, 0.1f);
             yield return null;
         }
-        while (icon.localScale.x > startScale.x)
+        while (icon.localScale.x > startLocalScale.x)
         {
             icon.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
             yield return null;
