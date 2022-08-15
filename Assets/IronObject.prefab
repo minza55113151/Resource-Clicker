@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7061537832773417457}
   - component: {fileID: -5203066115050325335}
-  - component: {fileID: 6056146938195208345}
+  - component: {fileID: 229502306881348815}
   m_Layer: 0
   m_Name: IronObject
   m_TagString: Resource
@@ -52,7 +52,7 @@ MonoBehaviour:
   shakeDuration: 0.1
   shakeRadius: 0.1
   isBig: 0
---- !u!60 &6056146938195208345
+--- !u!60 &229502306881348815
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,12 +77,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.029509425, y: 0.31089443}
-      - {x: -0.27537656, y: -0.046303093}
-      - {x: -0.25399968, y: -0.49138242}
-      - {x: 0.18363702, y: -0.17125037}
-      - {x: 0.31641743, y: 0.1639059}
-      - {x: 0.22959542, y: 0.47599033}
+    - - {x: 0.22809656, y: 0.96422017}
+      - {x: -0.11023003, y: 0.7025953}
+      - {x: -0.1880776, y: 0.46541297}
+      - {x: -0.26376563, y: 0.3263843}
+      - {x: -0.24476315, y: 0.071124494}
+      - {x: 0.05224526, y: 0.19733751}
+      - {x: 0.16285738, y: 0.36485618}
+      - {x: 0.3070191, y: 0.7025955}
 --- !u!1 &3531432585995397461
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c49ae41132072114ea1ad30a5bc30ce7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5dde65ca483524346a00e886fd926a9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

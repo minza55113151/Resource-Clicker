@@ -33,7 +33,7 @@ public class ResourceObject : MonoBehaviour
         SoundManager.instance.PlayPunch();
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            DestroyResource();
         }
     }
     
@@ -41,14 +41,13 @@ public class ResourceObject : MonoBehaviour
     {
         isBig = true;
         transform.localScale *= 3;
+        hp *= 10;
     }
 
-    private void OnDestroy()
+    private void DestroyResource()
     {
         //destroy effect
         //item drop to ui
-        //add count resource
-        //drop +- 1
         if (resourceName == "tree")
         {
             SoundManager.instance.PlayTreeBreak();
@@ -62,6 +61,7 @@ public class ResourceObject : MonoBehaviour
             SoundManager.instance.PlayGlassBreak();
         }
         ResourceManager.instance.AddResource(this);
+        Destroy(gameObject);
     }
     private IEnumerator Shake()
     {

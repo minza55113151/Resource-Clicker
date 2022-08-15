@@ -18,6 +18,8 @@ public class ItemCountingUI : MonoBehaviour
     
     public void SetText(string value)
     {
+        if (text == null)
+            Debug.Log("fuckkk");
         text.text = value;
         HitIcon();
     }
