@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorkerManager : MonoBehaviour
+public class WorkerManager : MonoBehaviour, ISaveable
 {
     public static WorkerManager instance;
-
-    public WorkerScriptableObject workerInfo;
 
     [SerializeField] private GameObject workerPrefab;
 
@@ -15,8 +13,6 @@ public class WorkerManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        LoadData();
-
     }
     private void Start()
     {
@@ -26,19 +22,14 @@ public class WorkerManager : MonoBehaviour
             Instantiate(workerPrefab, spawnPos, Quaternion.identity);
         }
     }
-    private void LoadData()
+    public void LoadData()
     {
         workerCount = PlayerPrefs.GetInt("workerCount", 0);
     }
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetInt("workerCount", workerCount);
     }
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
-
     public GameObject SpawnWorker()
     {
         Vector2 spawnPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));

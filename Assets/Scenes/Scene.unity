@@ -446,6 +446,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &131635124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 131635126}
+  - component: {fileID: 131635125}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &131635125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131635124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3e1cc5bb3c2c44ca41547259007a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveRate: 1
+--- !u!4 &131635126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131635124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150968596
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,6 +6752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1771460387}
   - component: {fileID: 1771460388}
+  - component: {fileID: 1771460389}
   m_Layer: 0
   m_Name: WorkerManager
   m_TagString: Untagged
@@ -6741,8 +6787,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541496ab34e210b448f1510229bcbef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerInfo: {fileID: 11400000, guid: 21736585a5913e140ad0a3c6297f480c, type: 2}
   workerPrefab: {fileID: 4522982550648427787, guid: c9cf8eeb27481cb4c9826b5d4022b2ff, type: 3}
+--- !u!114 &1771460389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771460386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ef35deec690e54fa9ac234af6d2793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 1
+  harvestDamage: 1
+  harvestSpeed: 1
+  harvestRadius: 0.5
 --- !u!1001 &1814031364
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,4 +23,11 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
     }
+    private void OnApplicationQuit()
+    {
+        if (clearSave)
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
 }

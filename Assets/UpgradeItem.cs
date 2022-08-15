@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeItem : MonoBehaviour
+public class UpgradeItem : MonoBehaviour, ISaveable
 {
 
     public string upgradeName;
@@ -20,7 +20,6 @@ public class UpgradeItem : MonoBehaviour
 
     private void Awake()
     {
-        LoadData();
         maxUpgrade = Mathf.Min(price.Length, priceUnit.Length);
     }
     private void Start()
@@ -31,18 +30,13 @@ public class UpgradeItem : MonoBehaviour
         if (upgradeName == "unlocknewresource")
             icon.sprite = priceUnitIcons[SpawnManager.instance.unlockCount + 1];
     }
-
-    private void LoadData()
+    public void LoadData()
     {
         nUpgrade = PlayerPrefs.GetInt(upgradeName, 0);
     }
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetInt(upgradeName, nUpgrade);
-    }
-    private void OnApplicationQuit()
-    {
-        SaveData();
     }
     private void SetUpItem()
     {
@@ -97,13 +91,13 @@ public class UpgradeItem : MonoBehaviour
                 WorkerManager.instance.SpawnWorker();
                 break;
             case "workerspeed":
-                WorkerManager.instance.workerInfo.harvestSpeed *= 0.8f;
+                WorkerInfo.instance.harvestSpeed *= 0.8f;
                 break;
             case "workerdamage":
-                WorkerManager.instance.workerInfo.harvestDamage += 1;
+                WorkerInfo.instance.harvestDamage += 1;
                 break;
             case "workerwalkspeed":
-                WorkerManager.instance.workerInfo.walkSpeed *= 1.3f;
+                WorkerInfo.instance.walkSpeed *= 1.3f;
                 break;
         }
     }

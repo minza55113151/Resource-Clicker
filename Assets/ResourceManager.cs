@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager : MonoBehaviour, ISaveable
 {
     public static ResourceManager instance;
 
@@ -16,7 +16,6 @@ public class ResourceManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        LoadData();
     }
     private void Start()
     {
@@ -28,7 +27,7 @@ public class ResourceManager : MonoBehaviour
         UIManager.instance.SetAmountResource(5, shard);
     }
 
-    private void LoadData()
+    public void LoadData()
     {
         money = PlayerPrefs.GetInt("money", 0);
         wood = PlayerPrefs.GetInt("wood", 0);
@@ -39,7 +38,7 @@ public class ResourceManager : MonoBehaviour
         
         
     }
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetInt("money", money);
         PlayerPrefs.SetInt("wood", wood);
@@ -48,12 +47,6 @@ public class ResourceManager : MonoBehaviour
         PlayerPrefs.SetInt("gold", gold);
         PlayerPrefs.SetInt("shard", shard);
     }
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
-
-
     public void AddResource(int tier, int amount)
     {
         switch (tier)

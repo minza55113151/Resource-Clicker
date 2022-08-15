@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour, ISaveable
 {
     public static SpawnManager instance;
 
@@ -31,10 +31,9 @@ public class SpawnManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        LoadData();
     }
 
-    private void LoadData()
+    public void LoadData()
     {
         spawnRate = PlayerPrefs.GetFloat("spawnRate", 5f);
         unlockCount = PlayerPrefs.GetInt("unlockCount", 1);
@@ -45,7 +44,7 @@ public class SpawnManager : MonoBehaviour
         isUnlockShard = PlayerPrefs.GetInt("isUnlockShard", 0) != 0;
 
     }
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetFloat("spawnRate", spawnRate);
         PlayerPrefs.SetInt("unlockCount", unlockCount);
@@ -55,11 +54,6 @@ public class SpawnManager : MonoBehaviour
         PlayerPrefs.SetInt("isUnlockGold", isUnlockGold ? 1 : 0);
         PlayerPrefs.SetInt("isUnlockShard", isUnlockShard ? 1 : 0);
     }
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
-
     private void Update()
     {
         SpawnRandomResource();

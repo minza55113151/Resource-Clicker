@@ -5,8 +5,6 @@ using UnityEngine;
 public class Worker : MonoBehaviour
 {
 
-    [SerializeField] private WorkerScriptableObject workerInfo;
-
     private GameObject targetResource = null;
 
     private float harvestTimer = 0f;
@@ -75,14 +73,14 @@ public class Worker : MonoBehaviour
     private void Walk()
     {
         // have resource target and not already walk to it
-        if (targetResource != null && Vector2.Distance(transform.position, targetResource.transform.position) > workerInfo.harvestRadius)
+        if (targetResource != null && Vector2.Distance(transform.position, targetResource.transform.position) > WorkerInfo.instance.harvestRadius)
         {
             //walk to resource
             walkPos = targetResource.transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, walkPos, workerInfo.walkSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, walkPos, WorkerInfo.instance.walkSpeed * Time.deltaTime);
         }
         // have resource target and already walk to it
-        else if (targetResource != null && Vector2.Distance(transform.position, targetResource.transform.position) <= workerInfo.harvestRadius)
+        else if (targetResource != null && Vector2.Distance(transform.position, targetResource.transform.position) <= WorkerInfo.instance.harvestRadius)
         {
             //no walk
             walkPos = Vector2.zero;
@@ -92,12 +90,12 @@ public class Worker : MonoBehaviour
         {
             //walk to random position
             walkPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
-            transform.position = Vector2.MoveTowards(transform.position, walkPos, workerInfo.walkSpeed / 2 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, walkPos, WorkerInfo.instance.walkSpeed / 2 * Time.deltaTime);
         }
         // no task and have target to walk
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, walkPos, workerInfo.walkSpeed / 2 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, walkPos, WorkerInfo.instance.walkSpeed / 2 * Time.deltaTime);
         }           
     }
 
@@ -111,7 +109,7 @@ public class Worker : MonoBehaviour
                 return;
             }
         }
-        if (Vector2.Distance(transform.position, targetResource.transform.position) <= workerInfo.harvestRadius)
+        if (Vector2.Distance(transform.position, targetResource.transform.position) <= WorkerInfo.instance.harvestRadius)
         {
             HitResource();
         }
@@ -120,10 +118,10 @@ public class Worker : MonoBehaviour
     private void HitResource()
     {
         harvestTimer += Time.deltaTime;
-        if (harvestTimer > workerInfo.harvestSpeed) 
+        if (harvestTimer > WorkerInfo.instance.harvestSpeed) 
         { 
-            harvestTimer -= workerInfo.harvestSpeed;
-            targetResource.GetComponent<ResourceObject>().Hit(workerInfo.harvestDamage);
+            harvestTimer -= WorkerInfo.instance.harvestSpeed;
+            targetResource.GetComponent<ResourceObject>().Hit(WorkerInfo.instance.harvestDamage);
         }
     }
     private GameObject FindRandomResource()

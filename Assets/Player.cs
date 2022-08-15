@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISaveable
 {
     public static Player instance;
 
@@ -10,19 +10,13 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        LoadData();
     }
-    private void SaveData()
-    {
-        PlayerPrefs.SetInt("clickDamage", clickDamage);
-    }
-    private void LoadData()
+    public void LoadData()
     {
         clickDamage = PlayerPrefs.GetInt("clickDamage", clickDamage);
     }
-    private void OnApplicationQuit()
+    public void SaveData()
     {
-        SaveData();
+        PlayerPrefs.SetInt("clickDamage", clickDamage);
     }
-
 }
