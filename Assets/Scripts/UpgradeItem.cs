@@ -24,9 +24,7 @@ public class UpgradeItem : MonoBehaviour, ISaveable
     }
     private void Start()
     {
-        //setup
         SetUpItem();
-        //icon
         if (upgradeName == "unlocknewresource")
             icon.sprite = priceUnitIcons[SpawnManager.instance.unlockCount + 1];
     }

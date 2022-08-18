@@ -1,0 +1,15 @@
+
+
+Item drop effect
+particle effect
+	hit
+	break resource
+	big spawned
+	unlock new resource 
+
+prestige
+	multiple gold
+	
+sound optimize
+
+gold scaling
